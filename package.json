@@ -1,0 +1,43 @@
+{
+	"name": "mdx-tailwind-nextjs-starter",
+	"private": false,
+	"description": "A NextJS + MDX + Tailwind starter with ESLint and Prettier",
+	"version": "0.1.0",
+	"author": "Nabil Tharwat",
+	"dependencies": {
+		"@mdx-js/loader": "^1.6.19",
+		"@next/mdx": "^9.5.5",
+		"gray-matter": "^4.0.2",
+		"next": "^9.5.5",
+		"next-compose-plugins": "^2.2.0",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-markdown": "^5.0.2",
+		"tailwindcss": "^1.9.6"
+	},
+	"devDependencies": {
+		"@axe-core/react": "^4.0.0",
+		"@babel/core": "^7.12.3",
+		"@babel/eslint-parser": "^7.12.1",
+		"@babel/preset-react": "^7.12.5",
+		"eslint": "^7.13.0",
+		"eslint-plugin-jsx-a11y": "^6.3.1",
+		"eslint-plugin-react": "^7.21.5",
+		"node-sass": "^4.13.1",
+		"postcss-preset-env": "^6.7.0",
+		"prettier": "^1.18.2"
+	},
+	"license": "MIT",
+	"scripts": {
+		"dev": "next dev",
+		"prebuild": "yarn lint",
+		"build:export": "next build && next export",
+		"build": "next build",
+		"start": "next start",
+		"format": "prettier --write src/**/*.{js,jsx}",
+		"lint": "eslint --ext .jsx --ext .js ./pages/**/* ./components/**/* --config ./.eslintrc.js"
+	},
+	"repository": {
+		"type": "git"
+	}
+}
