@@ -1,5 +1,3 @@
-import React from 'react'
-
 import '../styling/index.sass'
 
 if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {

@@ -1,8 +1,6 @@
-import React from 'react'
-
 import SEO from '../components/SEO'
 
-const NotFoundPage = () => (
+const NotFound = () => (
 	<>
 		<SEO title='404: غير موجود' />
 		<div className='text-center'>
@@ -23,4 +21,4 @@ export const config = {
 	unstable_runtimeJS: false
 }
 
-export default NotFoundPage
+export default NotFound
