@@ -1,8 +1,11 @@
 const withMDX = require('@next/mdx')({
-	extension: /\.mdx?$/
+	extension: /\.mdx?$/,
 })
 
 module.exports = withMDX({
 	target: 'experimental-serverless-trace',
-	pageExtensions: ['js', 'jsx', 'md', 'mdx']
+	pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+	future: {
+		webpack5: true,
+	},
 })

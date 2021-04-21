@@ -14,11 +14,22 @@ module.exports = {
 	],
 	parser: '@babel/eslint-parser',
 	parserOptions: {
-		ecmaVersion: 2018,
+		ecmaVersion: 2020,
 		ecmaFeatures: {
 			jsx: true,
 			modules: true,
 			experimentalObjectRestSpread: true,
+		},
+		requireConfigFile: false,
+		babelOptions: {
+			presets: [
+				[
+					'@babel/preset-react',
+					{
+						runtime: 'automatic',
+					},
+				],
+			],
 		},
 	},
 	plugins: ['react', 'jsx-a11y', 'jest'],

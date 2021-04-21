@@ -11,8 +11,7 @@ education everywhere.
 - Markdown + LaTeX support for math blocks `$$`!
 - Tutorials and examples to get started!
 - Features are config-enabled
-- Each source has its own styling. The static HTML uses `styling/index.sass` and
-  Tailwind, printing lecture notes to PDF uses `styling/print.css`, and printing
+- Each source has its own styling. The static HTML uses `styling/index.sass` printing lecture notes to PDF uses `styling/print.css`, and printing
   slides uses `styling/slide.css`
 - Upcoming: Contentful course content management
 
