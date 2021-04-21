@@ -68,6 +68,8 @@ supported types.
 - `chore`: cleanup tasks, merge commits, etc
 - `refactor`: refactoring existing code
 - `perf`: performance optimisation
+- `style`: code style improvements
+- `revert`: reverting a previous commit (only by maintainers)
 
 > Make sure to
 > [sign](https://docs.github.com/en/github/authenticating-to-github/managing-commit-signature-verification)

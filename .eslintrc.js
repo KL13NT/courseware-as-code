@@ -3,12 +3,14 @@ module.exports = {
 		browser: true,
 		commonjs: true,
 		es6: true,
-		node: true
+		node: true,
+		'jest/globals': true,
 	},
 	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
-		'plugin:jsx-a11y/recommended'
+		'plugin:jsx-a11y/recommended',
+		'plugin:jest/style',
 	],
 	parser: '@babel/eslint-parser',
 	parserOptions: {
@@ -16,10 +18,10 @@ module.exports = {
 		ecmaFeatures: {
 			jsx: true,
 			modules: true,
-			experimentalObjectRestSpread: true
-		}
+			experimentalObjectRestSpread: true,
+		},
 	},
-	plugins: ['react', 'jsx-a11y'],
+	plugins: ['react', 'jsx-a11y', 'jest'],
 	rules: {
 		indent: 0,
 		'linebreak-style': 0,
@@ -28,35 +30,43 @@ module.exports = {
 		'react/no-unescaped-entities': 0,
 		'react/jsx-curly-spacing': 0,
 		'react/prop-types': 0,
+		'jest/no-disabled-tests': 'warn',
+		'jest/no-focused-tests': 'error',
+		'jest/no-identical-title': 'error',
+		'jest/prefer-to-have-length': 'warn',
+		'jest/valid-expect': 'error',
 		'no-mixed-spaces-and-tabs': 0,
 		'prefer-rest-params': 0,
-		'no-unused-vars': 1,
 		'no-whitespace-before-property': 2,
-		'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		'object-curly-spacing': ['error', 'always'],
-		'comma-dangle': ['error', 'never'],
 		semi: ['error', 'never'],
 		'block-spacing': [2, 'always'],
-		'arrow-spacing': ['error', { before: true, after: true }],
+		'arrow-spacing': [
+			'error',
+			{
+				before: true,
+				after: true,
+			},
+		],
 		quotes: [
 			'error',
 			'single',
 			{
-				avoidEscape: true
-			}
+				avoidEscape: true,
+			},
 		],
 		'no-unused-vars': [
 			'error',
 			{
-				varsIgnorePattern: 'Fragment'
-			}
+				varsIgnorePattern: 'Fragment',
+			},
 		],
 		'quote-props': [
 			'error',
 			'as-needed',
 			{
-				keywords: false
-			}
+				keywords: false,
+			},
 		],
 		'space-unary-ops': [
 			2,
@@ -65,26 +75,27 @@ module.exports = {
 				nonwords: false,
 				overrides: {
 					new: true,
-					'=': true
-				}
-			}
+					'=': true,
+				},
+			},
 		],
 		'prefer-destructuring': [
 			'error',
 			{
 				array: true,
-				object: true
+				object: true,
 			},
 			{
-				enforceForRenamedProperties: false
-			}
+				enforceForRenamedProperties: false,
+			},
 		],
 		'prefer-const': [
 			'error',
 			{
 				destructuring: 'any',
-				ignoreReadBeforeAssign: false
-			}
-		]
-	}
+				ignoreReadBeforeAssign: false,
+			},
+		],
+		'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+	},
 }
