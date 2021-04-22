@@ -12,7 +12,7 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "lint": "eslint --ext .jsx --ext .js ./** --config ./.eslintrc.js",
+    "lint": "eslint --ext .jsx --ext .js ./ --config ./.eslintrc.js",
     "test": "jest --colors --expand --logHeapUsage --config jest.config.js --verbose --coverage",
     "prepare": "husky install"
   },

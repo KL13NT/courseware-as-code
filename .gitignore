@@ -74,3 +74,4 @@ yarn-error.log
 out/
 
 .next/
+public/**.pdf

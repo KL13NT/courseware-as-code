@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import path from 'path'
 
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
