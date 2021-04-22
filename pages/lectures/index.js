@@ -3,33 +3,33 @@ import React from 'react'
 import Link from 'next/link'
 
 import SEO from '../../components/SEO'
-import Container from '../../components/Container'
 
 import { getAllPosts } from '../../lib/api'
 
+import { courseCode, courseName, courseDescription } from '@config'
+
 export default function Index({ posts }) {
 	return (
-		<Container>
+		<>
 			<SEO title='Blog' path='blog' />
-			<h1>CS512</h1>
-			<p>This is a sample description for your course!</p>
+			<h1>
+				{courseCode} - {courseName}
+			</h1>
+			<p>{courseDescription}</p>
 			<hr />
 			<ul className='mt-12'>
-				{posts.map(post => (
-					<li
-						className={'list-none mb-12 text-center'}
-						key={post.frontmatter.name}
-					>
-						<Link href={post.path}>
+				{posts.map(({ frontmatter, path }) => (
+					<li className={'list-none mb-12'} key={frontmatter.name}>
+						<Link href={path}>
 							<a className='mx-auto bg-transparent'>
 								<h2 className='mt-2 mx-auto text-2xl lg:text-4xl inline'>
-									{post.frontmatter.name}
+									{frontmatter.name}
 								</h2>
 							</a>
 						</Link>
 
-						<p className='mt-4 text-xl'>
-							{new Date(post.frontmatter.date).toLocaleDateString('en-GB', {
+						<p className='mt-2 text-xl'>
+							{new Date(frontmatter.date).toLocaleDateString('en-GB', {
 								weekday: 'long',
 								year: 'numeric',
 								month: 'long',
@@ -37,11 +37,11 @@ export default function Index({ posts }) {
 							})}
 						</p>
 
-						<p className='mt-4 text-xl'>{post.frontmatter.description}</p>
+						<p className='mt-2 text-xl'>{frontmatter.description}</p>
 					</li>
 				))}
 			</ul>
-		</Container>
+		</>
 	)
 }
 

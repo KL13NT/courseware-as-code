@@ -12,7 +12,7 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "lint": "eslint --ext .jsx --ext .js ./pages/**/* ./components/**/* --config ./.eslintrc.js",
+    "lint": "eslint --ext .jsx --ext .js ./** --config ./.eslintrc.js",
     "test": "jest --colors --expand --logHeapUsage --config jest.config.js --verbose --coverage",
     "prepare": "husky install"
   },
@@ -40,7 +40,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^6.0.0",
-    "remark-math": "^4.0.0"
+    "remark-math": "^4.0.0",
+    "showdown": "^1.9.1"
   },
   "devDependencies": {
     "@axe-core/react": "^4.1.1",

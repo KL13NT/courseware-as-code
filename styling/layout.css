@@ -5319,3 +5319,7 @@ pre {
 .container-xl {
  max-width:619px
 }
+.container{
+	max-width: 607px;
+	margin: 40px auto;
+}
