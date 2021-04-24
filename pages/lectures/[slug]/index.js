@@ -11,6 +11,7 @@ import {
 } from '../../../lib/api'
 
 import { courseCode, courseName } from '@config'
+import { generatePdfFilename } from '../../../lib/utils'
 
 export default function Slug({ slug, content, frontmatter }) {
 	return (
@@ -36,7 +37,15 @@ export default function Slug({ slug, content, frontmatter }) {
 
 			<p className='mt-2 text-xl'>{frontmatter.description}</p>
 
-			<a href={`${slug}/pdf`}>Download this lecture as PDF</a>
+			<a href={`/${generatePdfFilename(courseCode, slug, 'lecture')}`} download>
+				Download this lecture as PDF
+			</a>
+
+			<br />
+
+			<a href={`/${generatePdfFilename(courseCode, slug, 'slide')}`} download>
+				Download this lecture's presentation
+			</a>
 
 			<hr />
 

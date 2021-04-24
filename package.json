@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "run-s lint test",
+    "build:pdf": "node ./scripts/generatePDF.js",
     "build:export": "next build && next export",
     "build": "next build",
     "start": "next start",
