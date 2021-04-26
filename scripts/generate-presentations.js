@@ -41,7 +41,7 @@ void (async () => {
 	const page = await browser.newPage()
 
 	const lectures = []
-	const promises = getAllSlides('lectures').map(post => async () => {
+	const promises = getAllSlides('slides').map(post => async () => {
 		const pages = []
 
 		const { content, frontmatter } = post
@@ -50,7 +50,7 @@ void (async () => {
 				.replace('DESCRIPTION', frontmatter.description)
 				.replace('DATE', formatDate(frontmatter.date)) + content
 
-		const mdPages = md.split('---')
+		const mdPages = md.split('___')
 		const pagePromises = mdPages.map(mdPage => async () => {
 			const html = showdown.makeHtml(mdPage)
 
@@ -88,7 +88,7 @@ void (async () => {
 
 	await sequentialPromises(promises)
 	lectures.forEach(({ pdf, slug }) => {
-		const filename = generatePdfFilename(courseCode, slug, 'slide')
+		const filename = generatePdfFilename(courseCode, slug, 'slides')
 		console.log('[info] writing output pdf file', filename)
 
 		fs.writeFileSync(path.resolve(OUTPUT_PATH, filename), pdf)

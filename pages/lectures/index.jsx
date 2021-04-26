@@ -46,7 +46,7 @@ export default function Index({ posts }) {
 }
 
 export async function getStaticProps() {
-	const posts = getAllPosts('lectures')
+	const posts = getAllPosts()
 
 	return {
 		props: {

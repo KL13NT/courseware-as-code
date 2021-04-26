@@ -37,13 +37,16 @@ export default function Slug({ slug, content, frontmatter }) {
 
 			<p className='mt-2 text-xl'>{frontmatter.description}</p>
 
-			<a href={`/${generatePdfFilename(courseCode, slug, 'lecture')}`} download>
-				Download this lecture as PDF
+			<a
+				href={`/${generatePdfFilename(courseCode, slug, 'lectures')}`}
+				download
+			>
+				Download this lecture's PDF document
 			</a>
 
 			<br />
 
-			<a href={`/${generatePdfFilename(courseCode, slug, 'slide')}`} download>
+			<a href={`/${generatePdfFilename(courseCode, slug, 'slides')}`} download>
 				Download this lecture's presentation
 			</a>
 

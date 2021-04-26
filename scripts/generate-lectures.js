@@ -22,7 +22,7 @@ void (async () => {
 	const page = await browser.newPage()
 
 	const results = []
-	const promises = getAllPosts('lectures').map(post => async () => {
+	const promises = getAllPosts().map(post => async () => {
 		const { content, frontmatter } = post
 		const md =
 			HEADER.replace('NAME', frontmatter.name)
@@ -44,7 +44,7 @@ void (async () => {
 
 	await sequentialPromises(promises)
 	results.forEach(({ pdf, slug }) => {
-		const filename = generatePdfFilename(courseCode, slug, 'lecture')
+		const filename = generatePdfFilename(courseCode, slug, 'lectures')
 		console.log('[info] writing output pdf file', filename)
 
 		fs.writeFileSync(path.resolve(OUTPUT_PATH, filename), pdf)
