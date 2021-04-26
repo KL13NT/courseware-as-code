@@ -1,0 +1,46 @@
+@media print {
+	@page {
+		size: 1280px 720px;
+	}
+	hr {
+		page-break-after: always;
+	}
+}
+
+html {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	align-items: center;
+	justify-content: center;
+}
+
+body {
+	height: max-content;
+	padding: 0;
+	margin: 0;
+	display: block;
+	width: max-content;
+}
+
+h1 {
+	font-size: 52px;
+}
+h2 {
+	font-size: 44px;
+}
+h3 {
+	font-size: 40px;
+}
+h4 {
+	font-size: 36px;
+}
+h5 {
+	font-size: 34px;
+}
+h6 {
+	font-size: 32px;
+}
+p {
+	font-size: 30;
+}

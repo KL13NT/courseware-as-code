@@ -1,23 +1,26 @@
 const path = require('path')
 const fs = require('fs')
+
+const puppeteer = require('puppeteer')
 const showdown = new (require('showdown').Converter)()
+
 const { courseCode } = require('../site.config')
 
-const { formatDate, generatePdfFilename } = require('../lib/utils')
+const {
+	formatDate,
+	generatePdfFilename,
+	sequentialPromises,
+} = require('../lib/utils')
 const { getAllPosts } = require('../lib/api')
 const { htmlToPdf } = require('../lib/htmlToPdf')
 
 const OUTPUT_PATH = path.resolve(__dirname, '../public')
 const HEADER = '# NAME\n\nDESCRIPTION\n\nDATE\n\n---\n\n'
 
-function sequentialPromises(promises) {
-	return promises.reduce(
-		(promise, task) => promise.then(task),
-		Promise.resolve()
-	)
-}
-
 void (async () => {
+	const browser = await puppeteer.launch()
+	const page = await browser.newPage()
+
 	const results = []
 	const promises = getAllPosts('lectures').map(post => async () => {
 		const { content, frontmatter } = post
@@ -29,7 +32,7 @@ void (async () => {
 
 		console.log('[info] generating pdf file', frontmatter.name)
 
-		const pdf = await htmlToPdf(html, [
+		const pdf = await htmlToPdf(page, html, [
 			path.resolve(__dirname, '../styling/layout.css'),
 		])
 
@@ -46,4 +49,6 @@ void (async () => {
 
 		fs.writeFileSync(path.resolve(OUTPUT_PATH, filename), pdf)
 	})
+
+	await browser.close()
 })()
