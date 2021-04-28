@@ -6,7 +6,7 @@ import SEO from '../../../components/SEO'
 
 import {
 	getAllCollectionSlugs,
-	getPostByFilename,
+	getPostBySlug,
 	getWebPathFromSlug,
 } from '../../../lib/api'
 
@@ -71,7 +71,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-	const post = getPostByFilename(slug, 'lectures')
+	const post = getPostBySlug(slug, 'lectures')
 
 	return {
 		props: {
