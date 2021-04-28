@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
+
+import 'katex/dist/katex.min.css' // `rehype-katex` does not import the CSS
+import 'highlight.js/styles/shades-of-purple.css' // a highlight-js theme
 
 import SEO from '../../../components/SEO'
 
@@ -11,7 +13,7 @@ import {
 } from '../../../lib/api'
 
 import { courseCode, courseName } from '@config'
-import { generatePdfFilename } from '../../../lib/utils'
+import { generatePdfFilename, unifiedMarkdownToHtml } from '../../../lib/utils'
 
 export default function Slug({ slug, content, frontmatter }) {
 	return (
@@ -52,7 +54,11 @@ export default function Slug({ slug, content, frontmatter }) {
 
 			<hr />
 
-			<ReactMarkdown>{content}</ReactMarkdown>
+			{/* <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+				{content}
+			</ReactMarkdown> */}
+
+			<div dangerouslySetInnerHTML={{ __html: content }} />
 		</>
 	)
 }
@@ -76,6 +82,7 @@ export async function getStaticProps({ params: { slug } }) {
 	return {
 		props: {
 			...post,
+			content: (await unifiedMarkdownToHtml(post.content)).contents,
 			path: getWebPathFromSlug(slug, 'lecture'),
 		},
 	}

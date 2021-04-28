@@ -6,7 +6,18 @@ date: 2021-04-21
 
 # Making Lectures
 
-This is a sample lecture. It uses Markdown as you can see. Each `file in the
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$
+
+```typescript
+
+const a: number = 5;
+
+```
+
+
+This is a sample lecture. It uses Markdown as you can see. Each `file` in the
 `collections/lectures` folder is parsed as either a lecture or a presentation
 for a lecture. Each lecture Markdown file ends with `.lecture.md` while lecture slides
 files end with `.slides.md`. I recommend you use a filenaming convention that

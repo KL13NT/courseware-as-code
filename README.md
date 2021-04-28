@@ -1,29 +1,33 @@
-# Courseware As Code
+# Courseware As Code - Education Made Easy(ier)
 
 A simple, intuitive, SEO-aware, Courseware As Code template repository for
-education everywhere.
+education everywhere. This template allows you to generate a fully functional
+and deploy-able website built using NextJS alongside generated PDF lectures and
+slides from simple Markdown files!
 
 ### What's inside?
 
 - Statically generated HTML lecture pages!
 - Downloadable PDF lecture files!
 - PDF slides generation!
-- Markdown + LaTeX support for math blocks `$$`!
+- Markdown + LaTeX  = ❤️
+- Add more pages to your website without having to go outside of your Markdown
+  comfort-zone with MDX! 😍
 - Tutorials and examples to get started!
-- Features are config-enabled
-- Each source has its own styling. The static HTML uses `styling/index.sass` printing lecture notes to PDF uses `styling/print.css`, and printing
-  slides uses `styling/slide.css`
+- Full configuration for everything. You have complete control
+- Each source has its own styling. The NextJS generated website and lecture PDF
+  documents use
+  `styling/layout.css` while generated slides use `styling/slide.css`
 - Upcoming: Contentful course content management
 
 ### How?
 
 - Static pages are generated using NextJS
 - Code is linted and formatted using ESLint and Prettier respectively
-- Support for Markdown sources uses @next/mdx
+- Support for NextJS Markdown pages uses @next/mdx
 - Support for Markdown LaTeX math blocks uses remark-math
-- PDF generation uses Puppeteer after building pages to navigate and PDF them
+- PDF generation (lectures and slides) uses Puppeteer
 - All lib functions are tested using Jest
-- Website accessibility testing is done using axe-core
 
 ### Getting started
 

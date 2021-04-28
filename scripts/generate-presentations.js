@@ -4,14 +4,14 @@ const fs = require('fs')
 const puppeteer = require('puppeteer')
 const hummus = require('hummus')
 const streams = require('memory-streams')
-const showdown = new (require('showdown').Converter)()
 
-const { courseCode } = require('../site.config')
+const { courseCode, printStyles } = require('../site.config')
 
 const {
 	formatDate,
 	generatePdfFilename,
 	sequentialPromises,
+	unifiedMarkdownToHtml,
 } = require('../lib/utils')
 const { getAllSlides } = require('../lib/api')
 const { htmlToPdf } = require('../lib/htmlToPdf')
@@ -52,15 +52,17 @@ void (async () => {
 
 		const mdPages = md.split('___')
 		const pagePromises = mdPages.map(mdPage => async () => {
-			const html = showdown.makeHtml(mdPage)
+			const { contents: html } = await unifiedMarkdownToHtml(mdPage)
+
+			const defaultStyling = [
+				path.resolve(__dirname, '../styling/layout.css'),
+				path.resolve(__dirname, '../styling/slide.css'),
+			]
 
 			const res = await htmlToPdf(
 				page,
 				html,
-				[
-					path.resolve(__dirname, '../styling/layout.css'),
-					path.resolve(__dirname, '../styling/slide.css'),
-				],
+				[...defaultStyling, ...printStyles] || defaultStyling,
 				{
 					height: 720,
 					width: 1280,
