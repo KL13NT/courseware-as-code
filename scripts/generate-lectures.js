@@ -2,14 +2,14 @@ const path = require('path')
 const fs = require('fs')
 
 const puppeteer = require('puppeteer')
-const showdown = new (require('showdown').Converter)()
 
-const { courseCode } = require('../site.config')
+const { courseCode, printStyles } = require('../site.config')
 
 const {
 	formatDate,
 	generatePdfFilename,
 	sequentialPromises,
+	unifiedMarkdownToHtml,
 } = require('../lib/utils')
 const { getAllPosts } = require('../lib/api')
 const { htmlToPdf } = require('../lib/htmlToPdf')
@@ -28,13 +28,12 @@ void (async () => {
 			HEADER.replace('NAME', frontmatter.name)
 				.replace('DESCRIPTION', frontmatter.description)
 				.replace('DATE', formatDate(frontmatter.date)) + content
-		const html = showdown.makeHtml(md)
+
+		const { contents: html } = await unifiedMarkdownToHtml(md)
 
 		console.log('[info] generating pdf file', frontmatter.name)
 
-		const pdf = await htmlToPdf(page, html, [
-			path.resolve(__dirname, '../styling/layout.css'),
-		])
+		const pdf = await htmlToPdf(page, html, printStyles || [])
 
 		results.push({
 			pdf,
