@@ -1,9 +1,24 @@
 # Courseware As Code - Education Made Easy(ier)
 
-A simple, intuitive, SEO-aware, Courseware As Code template repository for
+A simple and intuitive Courseware as Code template repository for
 education everywhere. This template allows you to generate a fully functional
 and deploy-able website built using NextJS alongside generated PDF lectures and
 slides from simple Markdown files!
+
+Table of Contents:
+-   [Why?](#why)
+-   [What's inside?](#whats-inside)
+-   [Architecture](#architecture)
+-   [How?](#how)
+-   [Map of Territory](#map-of-territory)
+-   [Upcoming features](#upcoming-features)
+-   [Getting started](#getting-started)
+-   [Deploying](#deploying)
+-   [Contributing](#contributing)
+-   [Contributing as a Student](#contributing-as-a-student)
+-   [Contributing as a Teacher](#contributing-as-a-teacher)
+-   [Contributing as a Developer](#contributing-as-a-developer)
+
 
 ### Why?
 
@@ -15,7 +30,8 @@ presented to me.
 This repository, despite not providing solid solutions to
 these problems, remains a positive attempt at providing an easier way for
 teachers and courseware maintainers to update courseware, and a straight-forward
-method to build a truly positive community led by students and teachers alike.
+method to build a truly positive community led by students and teachers alike. A
+step forward. It's my own implementation of [Courseware as Code](https://www.youtube.com/watch?v=L4zf_QIr4jQ).
 
 ### What's inside?
 
@@ -29,6 +45,13 @@ method to build a truly positive community led by students and teachers alike.
 - Complete control using configuration `site.config.js`
 - Upcoming: Contentful course content management
 
+### Architecture
+
+- SSG: NextJS
+- Testing: Jest
+- Pages: MDX
+- PDF Generation: custom scripts using Puppeteer :D
+
 ### How?
 
 - Static pages are generated using NextJS
@@ -38,13 +61,21 @@ method to build a truly positive community led by students and teachers alike.
 - PDF generation (lectures and slides) uses Puppeteer
 - All lib functions are tested using Jest
 
+### Map of Territory
+- `collections/` is where markdown content is found
+- `components/` are React components reused across pages
+- `pages/` are NextJS routes/pages
+- `public/` is where images and other static media belongs
+- `scripts/` are scripts for building
+- `styling/` where all global/print styling resides
+- `lib/` utilities used across the project
+
 ### Upcoming features
 
+- Contentful support
 - More control over what each page of a lecture contains
 - More customization
-- Contentful support
 - Other CMS's support
-
 
 ### Getting started
 
@@ -64,8 +95,9 @@ create a repository of your own based on this repository.
 
 You'll need to setup the environemnt variables in the deployment you're using,
 as well as the CI/CD yourself. The recommended host is Vercel since they support
-NextJS out of the box and all you need is to link the repository. If you'd like
-to build the demo (this repo) just click the button below!
+NextJS out of the box and all you need is to link the repository. Netlify also
+offer a great experience, though you'd be required to use the `export` option
+instead of just building. If you'd like to deploy the demo (this repo) just click the button below!
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FKL13NT%2Fcourseware-as-code&project-name=courseware-as-code&repo-name=courseware-as-code)
 
