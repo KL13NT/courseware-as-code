@@ -50,7 +50,7 @@ void (async () => {
 				.replace('DESCRIPTION', frontmatter.description)
 				.replace('DATE', formatDate(frontmatter.date)) + content
 
-		const mdPages = md.split('___')
+		const mdPages = md.split('* * *')
 		const pagePromises = mdPages.map(mdPage => async () => {
 			const { contents: html } = await unifiedMarkdownToHtml(mdPage)
 

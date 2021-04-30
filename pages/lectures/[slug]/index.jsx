@@ -10,12 +10,12 @@ import {
 	getAllCollectionSlugs,
 	getPostBySlug,
 	getWebPathFromSlug,
+	unifiedMarkdownToHtml,
 } from '../../../lib/api'
 
 import { courseCode, courseName } from '@config'
-import { generatePdfFilename, unifiedMarkdownToHtml } from '../../../lib/utils'
 
-export default function Slug({ slug, content, frontmatter }) {
+export default function Slug({ content, frontmatter, documents }) {
 	return (
 		<>
 			<SEO title='Blog' path='blog' />
@@ -39,24 +39,27 @@ export default function Slug({ slug, content, frontmatter }) {
 
 			<p className='mt-2 text-xl'>{frontmatter.description}</p>
 
-			<a
-				href={`/${generatePdfFilename(courseCode, slug, 'lectures')}`}
-				download
-			>
-				Download this lecture's PDF document
-			</a>
+			{documents.lecture ? (
+				<>
+					{' '}
+					<a href={`/${documents.lecture}`} download>
+						Download this lecture's PDF document
+					</a>
+					<br />
+				</>
+			) : null}
 
-			<br />
-
-			<a href={`/${generatePdfFilename(courseCode, slug, 'slides')}`} download>
-				Download this lecture's presentation
-			</a>
+			{documents.slides ? (
+				<>
+					{' '}
+					<a href={`/${documents.slides}`} download>
+						Download this lecture's PDF presentation
+					</a>
+					<br />
+				</>
+			) : null}
 
 			<hr />
-
-			{/* <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-				{content}
-			</ReactMarkdown> */}
 
 			<div dangerouslySetInnerHTML={{ __html: content }} />
 		</>

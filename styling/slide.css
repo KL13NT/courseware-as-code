@@ -2,6 +2,14 @@
 	@page {
 		size: 1280px 720px;
 	}
+
+	img {
+		display: block;
+		width: 5px;
+		max-width: 5px;
+		max-height: 5px;
+	}
+
 	hr {
 		page-break-after: always;
 	}

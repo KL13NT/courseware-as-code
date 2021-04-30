@@ -9,9 +9,8 @@ const {
 	formatDate,
 	generatePdfFilename,
 	sequentialPromises,
-	unifiedMarkdownToHtml,
 } = require('../lib/utils')
-const { getAllPosts } = require('../lib/api')
+const { getAllPosts, unifiedMarkdownToHtml } = require('../lib/api')
 const { htmlToPdf } = require('../lib/htmlToPdf')
 
 const OUTPUT_PATH = path.resolve(__dirname, '../public')
@@ -22,7 +21,7 @@ void (async () => {
 	const page = await browser.newPage()
 
 	const results = []
-	const promises = getAllPosts().map(post => async () => {
+	const promises = getAllPosts(true).map(post => async () => {
 		const { content, frontmatter } = post
 		const md =
 			HEADER.replace('NAME', frontmatter.name)
@@ -42,6 +41,7 @@ void (async () => {
 	})
 
 	await sequentialPromises(promises)
+
 	results.forEach(({ pdf, slug }) => {
 		const filename = generatePdfFilename(courseCode, slug, 'lectures')
 		console.log('[info] writing output pdf file', filename)
