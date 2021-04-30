@@ -5,6 +5,18 @@ education everywhere. This template allows you to generate a fully functional
 and deploy-able website built using NextJS alongside generated PDF lectures and
 slides from simple Markdown files!
 
+### Why?
+
+I'm a student. A tired student. I'm tired of having to deal with outdated
+knowledge in the courses I'm enrolled in. I'm tired of having no way of
+contributing to the course I'm taking, nor a say in whatever content is
+presented to me.
+
+This repository, despite not providing solid solutions to
+these problems, remains a positive attempt at providing an easier way for
+teachers and courseware maintainers to update courseware, and a straight-forward
+method to build a truly positive community led by students and teachers alike.
+
 ### What's inside?
 
 - Statically generated HTML lecture pages!
@@ -14,10 +26,7 @@ slides from simple Markdown files!
 - Add more pages to your website without having to go outside of your Markdown
   comfort-zone with MDX! 😍
 - Tutorials and examples to get started!
-- Full configuration for everything. You have complete control
-- Each source has its own styling. The NextJS generated website and lecture PDF
-  documents use
-  `styling/layout.css` while generated slides use `styling/slide.css`
+- Complete control using configuration `site.config.js`
 - Upcoming: Contentful course content management
 
 ### How?
@@ -28,6 +37,14 @@ slides from simple Markdown files!
 - Support for Markdown LaTeX math blocks uses remark-math
 - PDF generation (lectures and slides) uses Puppeteer
 - All lib functions are tested using Jest
+
+### Upcoming features
+
+- More control over what each page of a lecture contains
+- More customization
+- Contentful support
+- Other CMS's support
+
 
 ### Getting started
 
@@ -52,10 +69,45 @@ to build the demo (this repo) just click the button below!
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FKL13NT%2Fcourseware-as-code&project-name=courseware-as-code&repo-name=courseware-as-code)
 
+### Contributing
 
-### Enabling Contentful CMS
+I'm open to all kinds of contributions. If you want to:
 
-Enabling Contentful is as easy as setting the `CONTENTFUL_ACCESS_KEY`
-environment variable. The build pipeline loads content from Contentful
-automatically if this
-variable is set.
+```
+🤔 Suggest a feature
+🐛 Report an issue
+📖 Improve documentation
+👩‍💻 Contribute to the code
+```
+
+You are more than welcome. Before contributing, kindly check the
+[guidelines](CONTRIBUTING.md).
+
+There are also specific guidelines for each role:
+- [Student](#contributing-as-a-student)
+- [Teacher](#contributing-as-a-teacher)
+- [Developer](#contributing-as-a-developer)
+
+### Contributing as a Student
+
+If you're a student trying to contribute to a course's courseware what you want
+to look for is the `collections` folder. This folder contains all input Markdown
+documents that go into making lectures and slides. You can help by fixing typos,
+adding better explanation, adding useful resources that helped you, or even
+adding whole lectures! How cool is that! 😄
+
+### Contributing as a Teacher
+
+As a teacher you'll most probably be responsible for this repo, given you're
+responsible for the course as well. Your role dictates transparency and fairness
+in managing your course. This shows in terms of this repository and is
+represented by your welcoming of student contribution to making courseware
+better. There's not much to say here. You can use the developer guidelines at
+your own repository scale.
+
+### Contributing as a Developer
+
+If you're a developer willing to contribute to this project you're always more
+than welcome to do so. There's a complete [contribution guide](CONTRIBUTING.md)
+to help you get started, and the code is fairly documented to allow further
+modifications/extensions.

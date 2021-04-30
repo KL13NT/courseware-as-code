@@ -16,6 +16,10 @@ const a: number = 5;
 
 ```
 
+![test](https://raw.githubusercontent.com/timlrx/tailwind-nextjs-starter-blog/master/public/static/images/twitter-card.png)
+
+![test](/900.png)
+
 
 This is a sample lecture. It uses Markdown as you can see. Each `file` in the
 `collections/lectures` folder is parsed as either a lecture or a presentation
