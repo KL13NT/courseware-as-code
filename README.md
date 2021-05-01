@@ -115,18 +115,24 @@ I'm open to all kinds of contributions. If you want to:
 You are more than welcome. Before contributing, kindly check the
 [guidelines](CONTRIBUTING.md).
 
-There are also specific guidelines for each role:
-- [Student](#contributing-as-a-student)
-- [Teacher](#contributing-as-a-teacher)
-- [Developer](#contributing-as-a-developer)
-
 ### Contributing as a Student
 
-If you're a student trying to contribute to a course's courseware what you want
+If you're a student trying to contribute to a course's courseware then what you want
 to look for is the `collections` folder. This folder contains all input Markdown
-documents that go into making lectures and slides. You can help by fixing typos,
-adding better explanation, adding useful resources that helped you, or even
-adding whole lectures! How cool is that! 😄
+documents that go into making lectures and slides. 
+
+The `collections` folder has two subfolders, `slides` and `lectures`. The `lectures` 
+folder contains the markdown for all lectures in a course. Each lecture is contained 
+in a single Markdown file. All you have to do then is locate the lecture you wish to 
+contribute to, and simply edit it!
+
+You can help by fixing typos, adding better explanation, adding useful 
+resources that helped you, or even adding whole lectures! How cool is that! 😄
+
+If you have no prior experience using Git or contributing to open source projects
+refer to [this lovely tutorial series by Digital Ocean](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source).
+It walks you through the basic fundamentals of Git all the way until you're ready to
+contribute! 
 
 ### Contributing as a Teacher
 
@@ -136,6 +142,8 @@ in managing your course. This shows in terms of this repository and is
 represented by your welcoming of student contribution to making courseware
 better. There's not much to say here. You can use the developer guidelines at
 your own repository scale.
+
+> Knowledge of Git is required.
 
 ### Contributing as a Developer
 
