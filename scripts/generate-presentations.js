@@ -40,7 +40,7 @@ void (async () => {
 	const page = await browser.newPage()
 
 	const lectures = []
-	const promises = getAllSlides('slides').map(post => async () => {
+	const promises = getAllSlides(true).map(post => async () => {
 		const pages = []
 
 		const { content, frontmatter } = post
@@ -57,6 +57,8 @@ void (async () => {
 				path.resolve(__dirname, '../styling/layout.css'),
 				path.resolve(__dirname, '../styling/slide.css'),
 			]
+
+			console.log(html)
 
 			const res = await htmlToPdf(
 				page,
