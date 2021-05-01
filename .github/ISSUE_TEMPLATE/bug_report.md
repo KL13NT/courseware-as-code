@@ -2,7 +2,7 @@
 name: Bug report
 about: Report a bug or CI/CD pipeline issues
 title: '🐛: '
-labels: 'bug, waiting triage'
+labels: 'bug, status: waiting triage'
 assignees: ''
 
 ---
