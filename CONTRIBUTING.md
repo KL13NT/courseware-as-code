@@ -6,6 +6,7 @@ Reading and following these guidelines will help me make the contribution proces
 
 -   [Code of Conduct](#code-of-conduct)
 -   [Getting Started](#getting-started)
+    -   [Discussions](#discussions)
     -   [Issues](#issues)
     -   [Pull Requests](#pull-requests)
 -   [Committing](#committing)
@@ -21,9 +22,13 @@ Contributions are made to this repo via Issues and Pull Requests (PRs). A few ge
 -   Search for existing Issues and PRs before creating your own.
 -   Depending on the impact, it could take a while to investigate the root cause of a bug. A friendly ping in the comment thread to the submitter or a contributor can help draw attention if your issue is blocking.
 
+### Discussions
+
+This repository uses GitHub Discussions. This is where all discussions should occur. If you have an idea for a feature but don't have complete details on how it should be implemented then please use discussions to discuss these details. Issues are reserved for detailed bug reports and feature requests. If you have questions, basic ideas, or have built something awesome using this repository feel free to use discussions.  
+
 ### Issues
 
-Issues should be used to report problems with the platform, request a new feature, or to discuss potential changes before a PR is created. When you create a new Issue, a template will be loaded that will guide you through collecting and providing the information I need to investigate.
+Issues should be used to report problems with the platform or request a new feature. When you create a new Issue, a template will be loaded that will guide you through collecting and providing the information I need to investigate.
 
 If you find an Issue that addresses the problem you're having, please add your own reproduction information to the existing issue rather than creating a new one. Adding a [reaction](https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/) can also help indicate to me that a particular problem is affecting more than just the reporter.
 
