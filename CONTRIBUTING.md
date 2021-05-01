@@ -55,7 +55,8 @@ In general, I follow the ["fork-and-pull" Git workflow](https://github.com/susam
 ## Committing
 
 Please make sure to follow the angular commit message format and use one of the
-supported types.
+supported types. Commit messages are linted using commitlint before you actually
+commit, so don't worry about it. All commit messages must be lower case.
 
 **Supported types include:**
 

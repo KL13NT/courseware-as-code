@@ -17,7 +17,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "lint": "eslint --ext .jsx --ext .js ./ --config ./.eslintrc.js",
     "test": "jest --colors --expand --logHeapUsage --config jest.config.js --verbose --coverage",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "toc": "markdown-toc --bullets=- --no-firsth1"
   },
   "repository": {
     "type": "git",

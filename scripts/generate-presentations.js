@@ -11,9 +11,8 @@ const {
 	formatDate,
 	generatePdfFilename,
 	sequentialPromises,
-	unifiedMarkdownToHtml,
 } = require('../lib/utils')
-const { getAllSlides } = require('../lib/api')
+const { getAllSlides, unifiedMarkdownToHtml } = require('../lib/api')
 const { htmlToPdf } = require('../lib/htmlToPdf')
 
 const OUTPUT_PATH = path.resolve(__dirname, '../public')
