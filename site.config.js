@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = {
 	/** the course name */
 	courseName: 'Sample Course',
@@ -10,17 +8,9 @@ module.exports = {
 	/** your campus homepage link */
 	campusLink: 'https://github.com/KL13NT/courseware-as-code',
 	/** styles used when producing PDF files */
-	printStyles: [
-		/** default layout for consistency with website */
-		path.resolve(__dirname, './styling/layout.css'),
-		/** katex styling for rendered LaTeX annotations */
-		path.resolve(__dirname, './node_modules/katex/dist/katex.min.css'),
-		/** highlight.js syntax-highlighting theme */
-		path.resolve(
-			__dirname,
-			'./node_modules/highlight.js/styles/shades-of-purple.css'
-		),
-	],
-	/** used for syntax highlighting */
+	printStyles: [],
+	/** marp-core constructor options for presentation generation */
+	marpConstructorOptions: {},
+	/** syntax-highlighting languages for website and pdf lectures */
 	highlightLanguages: ['javascript', 'typescript'],
 }
