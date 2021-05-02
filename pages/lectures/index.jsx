@@ -8,18 +8,31 @@ import { getAllPosts } from '../../lib/api'
 
 import { courseCode, courseName, courseDescription } from '@config'
 
+import styles from './lectures.module.css'
+
 export default function Index({ posts }) {
 	return (
 		<>
 			<SEO title='Blog' path='blog' />
-			<h1>
-				{courseCode} - {courseName}
-			</h1>
-			<p>{courseDescription}</p>
+			<div className='header'>
+				<h1>
+					{courseCode} - {courseName}
+				</h1>
+				<p>{courseDescription}</p>
+			</div>
 			<hr />
-			<ul className='mt-12'>
+			<ul className={styles.list}>
 				{posts.map(({ frontmatter, path }) => (
 					<li className={'list-none mb-12'} key={frontmatter.name}>
+						<span className='mt-2 text-xl'>
+							{new Date(frontmatter.date).toLocaleDateString('en-GB', {
+								weekday: 'long',
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})}
+						</span>
+
 						<Link href={path}>
 							<a className='mx-auto bg-transparent'>
 								<h2 className='mt-2 mx-auto text-2xl lg:text-4xl inline'>
@@ -28,16 +41,9 @@ export default function Index({ posts }) {
 							</a>
 						</Link>
 
-						<p className='mt-2 text-xl'>
-							{new Date(frontmatter.date).toLocaleDateString('en-GB', {
-								weekday: 'long',
-								year: 'numeric',
-								month: 'long',
-								day: 'numeric',
-							})}
-						</p>
-
 						<p className='mt-2 text-xl'>{frontmatter.description}</p>
+
+						<hr />
 					</li>
 				))}
 			</ul>

@@ -2,7 +2,7 @@ import { courseCode, courseName, courseDescription } from '@config'
 
 export default function Header() {
 	return (
-		<header>
+		<header className='header'>
 			<h1>
 				{courseCode} - {courseName}
 			</h1>

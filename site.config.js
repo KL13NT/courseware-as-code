@@ -1,6 +1,6 @@
 module.exports = {
 	/** the course name */
-	courseName: 'Sample Course',
+	courseName: 'Introduction to Computer Science',
 	/** the course code */
 	courseCode: 'CS551',
 	/** a short course description */

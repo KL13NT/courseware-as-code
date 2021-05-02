@@ -13,20 +13,15 @@ import {
 	unifiedMarkdownToHtml,
 } from '../../../lib/api'
 
-import { courseCode, courseName } from '@config'
-
 export default function Slug({ content, frontmatter, documents }) {
 	return (
 		<>
 			<SEO title='Blog' path='blog' />
 
-			<h1>
-				{courseCode} - {courseName}
-			</h1>
-
-			<h2 className='mt-2 mx-auto text-2xl lg:text-4xl inline'>
-				{frontmatter.name}
-			</h2>
+			<div className='header'>
+				<h1>{frontmatter.name}</h1>
+				<p>{frontmatter.description}</p>
+			</div>
 
 			<p className='mt-2 text-xl'>
 				{new Date(frontmatter.date).toLocaleDateString('en-GB', {
@@ -36,8 +31,6 @@ export default function Slug({ content, frontmatter, documents }) {
 					day: 'numeric',
 				})}
 			</p>
-
-			<p className='mt-2 text-xl'>{frontmatter.description}</p>
 
 			{documents.lecture ? (
 				<>

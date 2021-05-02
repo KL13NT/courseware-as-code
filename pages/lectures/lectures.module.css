@@ -1,0 +1,31 @@
+.list hr {
+	width: 10%;
+	margin: 2rem auto;
+}
+
+.list span {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: black;
+	display: block;
+}
+
+.list p {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+	font-weight: 300;
+	color: black;
+	display: block;
+	margin-top: 0;
+}
+
+.list {
+	list-style: none;
+}
+
+.list h2 {
+	font-size: 2rem;
+	margin-bottom: 0.5rem;
+	font-weight: 600;
+	color: black;
+}
