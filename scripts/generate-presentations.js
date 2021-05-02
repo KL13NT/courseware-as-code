@@ -1,96 +1,62 @@
 const path = require('path')
 const fs = require('fs')
-
 const puppeteer = require('puppeteer')
-const hummus = require('hummus')
-const streams = require('memory-streams')
+const { Marp } = require('@marp-team/marp-core')
 
-const { courseCode, printStyles } = require('../site.config')
+const { generatePdfFilename, sequentialPromises } = require('../lib/utils')
+const { getAllSlides } = require('../lib/api')
 
 const {
-	formatDate,
-	generatePdfFilename,
-	sequentialPromises,
-} = require('../lib/utils')
-const { getAllSlides, unifiedMarkdownToHtml } = require('../lib/api')
-const { htmlToPdf } = require('../lib/htmlToPdf')
+	courseCode,
+	marpConstructorOptions,
+	printStyles,
+} = require('../site.config')
 
 const OUTPUT_PATH = path.resolve(__dirname, '../public')
-const HEADER = '# NAME\n\nDESCRIPTION\n\nDATE\n\n---\n\n'
-
-function combinePDFBuffers(firstBuffer, secondBuffer) {
-	const outStream = new streams.WritableStream()
-	const firstPDFStream = new hummus.PDFRStreamForBuffer(firstBuffer)
-	const secondPDFStream = new hummus.PDFRStreamForBuffer(secondBuffer)
-
-	const pdfWriter = hummus.createWriterToModify(
-		firstPDFStream,
-		new hummus.PDFStreamForResponse(outStream)
-	)
-	pdfWriter.appendPDFPagesFromPDF(secondPDFStream)
-	pdfWriter.end()
-	const newBuffer = outStream.toBuffer()
-	outStream.end()
-
-	return newBuffer
-}
 
 void (async () => {
-	const browser = await puppeteer.launch()
+	const browser = await puppeteer.launch({
+		headless: true,
+		printBackground: true,
+		displayHeaderFooter: false,
+		defaultViewport: {
+			width: 1280,
+			height: 720,
+		},
+	})
 	const page = await browser.newPage()
+	const marp = new Marp(marpConstructorOptions || {})
 
-	const lectures = []
+	const presentations = []
 	const promises = getAllSlides(true).map(post => async () => {
-		const pages = []
+		const { original } = post
 
-		const { content, frontmatter } = post
-		const md =
-			HEADER.replace('NAME', frontmatter.name)
-				.replace('DESCRIPTION', frontmatter.description)
-				.replace('DATE', formatDate(frontmatter.date)) + content
+		console.log('[info] generating pdf file', post.frontmatter.name)
 
-		const mdPages = md.split('* * *')
-		const pagePromises = mdPages.map(mdPage => async () => {
-			const { contents: html } = await unifiedMarkdownToHtml(mdPage)
+		const { html, css } = marp.render(original)
+		await page.setContent(html)
+		await page.addStyleTag({ content: css })
 
-			const defaultStyling = [
-				path.resolve(__dirname, '../styling/layout.css'),
-				path.resolve(__dirname, '../styling/slide.css'),
-			]
-
-			console.log(html)
-
-			const res = await htmlToPdf(
-				page,
-				html,
-				[...defaultStyling, ...printStyles] || defaultStyling,
-				{
-					height: 720,
-					width: 1280,
-					scale: 1,
-					printBackground: true,
-					displayHeaderFooter: false,
-					preferCSSPageSize: true,
-				}
+		await Promise.all(
+			printStyles.map(p =>
+				page.addStyleTag({
+					path: path.resolve(__dirname, p),
+				})
 			)
+		)
 
-			pages.push(res)
+		const pdf = await page.pdf({
+			preferCSSPageSize: true,
 		})
 
-		await sequentialPromises(pagePromises)
-
-		console.log('[info] generating pdf file', frontmatter.name)
-
-		const pdf = pages.reduce(combinePDFBuffers)
-
-		lectures.push({
+		presentations.push({
 			pdf,
 			...post,
 		})
 	})
 
 	await sequentialPromises(promises)
-	lectures.forEach(({ pdf, slug }) => {
+	presentations.forEach(({ pdf, slug }) => {
 		const filename = generatePdfFilename(courseCode, slug, 'slides')
 		console.log('[info] writing output pdf file', filename)
 
