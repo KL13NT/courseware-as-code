@@ -150,6 +150,43 @@ answer is yes! The `export` command allows you to export your app to static
 HTML, which can be run standalone without the need of a Node.js server. It also
 generates up-to-date PDF files alongside the output files.
 
+### Jumping into the code
+
+You're probably wondering, how the hell do you modify this thing? And let me
+answer that in simple points. This project is built on 3 main packages: Next.js,
+marp-core, and Puppeteer.
+
+Next.js is a web framework for building statically generated and
+server-side-rendered web applications. It uses what is known as filesystem-based
+routing. I talked about it extensively [in this
+video](https://www.youtube.com/watch?v=ZpXTvP7QVFY&t=142s), and you can read the
+[official documentation here](https://nextjs.org/docs/routing/introduction).
+Each js/jsx/mdx file in the `pages/` directory corresponds to a page in the output
+website. So `pages/index.mdx` corresponds to `example.com/index.html`, and so
+on.
+
+> MDX files are a special mix of Markdown and React. You can create new website
+> pages using pure Markdown using MDX. Just copy index.mdx and modify it as you wish.
+
+There are three main pages: index, lectures, and [slug]. [slug] is a [dynamic
+route](https://nextjs.org/docs/routing/dynamic-routes) that corresponds to
+each markdown file in the `collections/lectures`
+directory.
+
+Each file in the `collections/lectures` directory is rendered using the
+`lectures/[slug]` component page once in the output bundle. You probably don't
+need to modify any of those much at all.
+
+Styling, however, is different. Each page has a specific css file next to it. So
+`index.mdx` uses `index.module.css`, and so on. These are
+[CSSModules](https://github.com/css-modules/css-modules) and are scoped to those
+pages *only*. Global styling is available in the `styling/layout.css` file.
+
+So far (if you've read all the links) you should be ready to edit these pages
+freely. Note that there are other tutorials available only in the built website.
+You can manually read them in the `collections` directory, but I'd generally
+recommend against that as it takes away part of the explanation.
+
 ### Deploying
 
 There are multiple ways to deploy this project. The first (and hardest) way is
