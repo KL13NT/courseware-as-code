@@ -39,12 +39,11 @@ step forward. It's my own implementation of [Courseware as Code](https://www.you
 - Statically generated HTML lecture pages!
 - Downloadable PDF lecture files!
 - PDF slides generation!
-- Markdown + LaTeX = ❤️
+- Markdown + Math (LaTeX) = ❤️
 - Add more pages to your website without having to go outside of your Markdown
   comfort-zone with MDX! 😍
 - Tutorials and examples to get started!
 - Complete control using configuration `site.config.js`
-- Upcoming: Contentful course content management
 
 ### How?
 
@@ -52,7 +51,7 @@ step forward. It's my own implementation of [Courseware as Code](https://www.you
 - Code is linted and formatted using ESLint and Prettier respectively
 - Support for NextJS Markdown pages uses @next/mdx
 - Support for Markdown LaTeX math blocks uses remark-math
-- PDF generation (lectures and slides) uses Puppeteer
+- PDF generation (lectures and slides) uses Puppeteer and [Marp/Core](https://github.com/marp-team/marp-core)
 - All lib functions are tested using Jest
 
 ### Map of Territory
@@ -61,15 +60,15 @@ step forward. It's my own implementation of [Courseware as Code](https://www.you
 - `components/` are React components reused across pages
 - `pages/` are NextJS routes/pages
 - `public/` is where images and other static media belongs
-- `scripts/` are scripts for building
+- `scripts/` are scripts used in the build pipeline
 - `styling/` where all global/print styling resides
 - `lib/` utilities used across the project
 
 ### Upcoming features
 
 - Contentful support
-- More control over what each page of a lecture contains
 - More customization
+- More tutorials
 - Other CMS's support
 
 ### Getting started
