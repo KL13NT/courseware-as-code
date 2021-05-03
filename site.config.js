@@ -9,16 +9,6 @@ module.exports = {
 	courseDescription: 'This is a sample description for your course!',
 	/** your campus homepage link */
 	campusLink: 'https://github.com/KL13NT/courseware-as-code',
-	/** styles used when producing PDF presentation files. each item must be
-	 * a fully resolved path */
-	slideStyles: [
-		path.resolve(__dirname, './styling/slides.css'),
-		path.resolve(__dirname, './node_modules/katex/dist/katex.min.css'),
-		path.resolve(
-			__dirname,
-			'./node_modules/highlight.js/styles/shades-of-purple.css'
-		),
-	],
 	/** styles used when producing PDF lecture files. each item must be
 	 * a fully resolved path */
 	lectureStyles: [
