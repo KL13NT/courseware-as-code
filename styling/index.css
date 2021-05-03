@@ -1,0 +1,118 @@
+body {
+	@apply font-display mt-10 mx-auto;
+	width: 670px;
+}
+
+h1,
+h2 {
+	@apply font-black mt-8;
+}
+
+h3,
+h4 {
+	@apply font-bold mt-8 text-dark-700 max-w-max;
+}
+
+h1 {
+	@apply text-4xl;
+}
+
+h2 {
+	@apply text-3xl;
+}
+
+h3 {
+	@apply text-2xl;
+}
+
+h4 {
+	@apply text-xl;
+}
+
+p {
+	@apply text-lg mt-4;
+}
+
+a {
+	@apply bg-link max-w-max;
+}
+
+a&:hover,
+a&:active,
+a&:focus {
+	@apply underline;
+}
+
+ul,
+ol {
+	@apply px-4 mt-0 text-lg;
+}
+
+ul li {
+	list-style-type: square;
+}
+
+ol li {
+	list-style-type: decimal-leading-zero;
+}
+
+img {
+	@apply max-h-screen m-auto;
+}
+
+blockquote {
+	@apply p-4 border-solid border-l-2 border-black m-8;
+}
+
+blockquote p {
+	@apply m-0;
+}
+
+p cite {
+	@apply text-lg font-normal;
+}
+
+hr {
+	margin: 20px auto;
+	background: black;
+	opacity: 0.6;
+	height: 1px;
+	width: 20%;
+}
+
+pre {
+	@apply mt-4;
+}
+
+code {
+	@apply rounded text-white py-0 px-1 bg-code;
+}
+
+pre code {
+	@apply max-w-full overflow-auto block p-4;
+}
+
+h3,
+h4 {
+	line-height: 2.2;
+}
+
+ol li {
+	list-style-type: arabic-indic;
+}
+
+h3,
+h4 {
+	padding-bottom: 4px;
+}
+
+.header time {
+	@apply text-sm;
+}
+.header time::before {
+	content: '> ';
+	display: inline;
+}
+.header h1 {
+	@apply mt-4;
+}

@@ -9,7 +9,6 @@ const { getAllSlides } = require('../lib/api')
 const {
 	courseCode,
 	marpConstructorOptions,
-	printStyles,
 } = require('../site.config')
 
 const OUTPUT_PATH = path.resolve(__dirname, '../public')
@@ -36,14 +35,6 @@ void (async () => {
 		const { html, css } = marp.render(original)
 		await page.setContent(html)
 		await page.addStyleTag({ content: css })
-
-		await Promise.all(
-			printStyles.map(p =>
-				page.addStyleTag({
-					path: path.resolve(__dirname, p),
-				})
-			)
-		)
 
 		const pdf = await page.pdf({
 			preferCSSPageSize: true,

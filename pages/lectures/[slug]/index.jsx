@@ -19,40 +19,37 @@ export default function Slug({ content, frontmatter, documents }) {
 			<SEO title='Blog' path='blog' />
 
 			<div className='header'>
+				<time>
+					{new Date(frontmatter.date).toLocaleDateString('en-GB', {
+						weekday: 'long',
+						year: 'numeric',
+						month: 'long',
+						day: 'numeric',
+					})}
+				</time>
 				<h1>{frontmatter.name}</h1>
 				<p>{frontmatter.description}</p>
+
+				{documents.lecture ? (
+					<>
+						{' '}
+						<a href={`/${documents.lecture}`} download>
+							Download this lecture's PDF document
+						</a>
+						<br />
+					</>
+				) : null}
+
+				{documents.slides ? (
+					<>
+						{' '}
+						<a href={`/${documents.slides}`} download>
+							Download this lecture's PDF presentation
+						</a>
+						<br />
+					</>
+				) : null}
 			</div>
-
-			<p className='mt-2 text-xl'>
-				{new Date(frontmatter.date).toLocaleDateString('en-GB', {
-					weekday: 'long',
-					year: 'numeric',
-					month: 'long',
-					day: 'numeric',
-				})}
-			</p>
-
-			{documents.lecture ? (
-				<>
-					{' '}
-					<a href={`/${documents.lecture}`} download>
-						Download this lecture's PDF document
-					</a>
-					<br />
-				</>
-			) : null}
-
-			{documents.slides ? (
-				<>
-					{' '}
-					<a href={`/${documents.slides}`} download>
-						Download this lecture's PDF presentation
-					</a>
-					<br />
-				</>
-			) : null}
-
-			<hr />
 
 			<div dangerouslySetInnerHTML={{ __html: content }} />
 		</>

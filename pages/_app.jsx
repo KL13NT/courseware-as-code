@@ -1,6 +1,7 @@
 import React from 'react'
 
-import '../styling/layout.css'
+import '../styling/globals.css'
+import '../styling/index.css'
 
 function App({ Component, pageProps }) {
 	return (

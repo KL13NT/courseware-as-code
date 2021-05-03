@@ -180,7 +180,7 @@ need to modify any of those much at all.
 Styling, however, is different. Each page has a specific css file next to it. So
 `index.mdx` uses `index.module.css`, and so on. These are
 [CSSModules](https://github.com/css-modules/css-modules) and are scoped to those
-pages *only*. Global styling is available in the `styling/layout.css` file.
+pages *only*. Global styling is available in the `styling/index.css` file.
 
 So far (if you've read all the links) you should be ready to edit these pages
 freely. Note that there are other tutorials available only in the built website.
