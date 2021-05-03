@@ -32,7 +32,7 @@ void (async () => {
 
 		console.log('[info] generating pdf file', frontmatter.name)
 
-		const pdf = await htmlToPdf(page, html, printStyles || [])
+		const pdf = await htmlToPdf({ page, html, printStyles: printStyles || [] })
 
 		results.push({
 			pdf,
