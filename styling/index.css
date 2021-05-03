@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
-
 body {
-	@apply font-display w-3/6 mt-10 mx-auto;
+	@apply font-display mt-10 mx-auto;
+	width: 670px;
 }
 
 h1,

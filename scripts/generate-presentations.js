@@ -9,7 +9,7 @@ const { getAllSlides } = require('../lib/api')
 const {
 	courseCode,
 	marpConstructorOptions,
-	printStyles,
+	slideStyles,
 } = require('../site.config')
 
 const OUTPUT_PATH = path.resolve(__dirname, '../public')
@@ -38,7 +38,7 @@ void (async () => {
 		await page.addStyleTag({ content: css })
 
 		await Promise.all(
-			printStyles.map(p =>
+			slideStyles.map(p =>
 				page.addStyleTag({
 					path: path.resolve(__dirname, p),
 				})
